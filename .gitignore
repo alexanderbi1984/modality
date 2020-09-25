@@ -1,0 +1,12 @@
+
+*.pyc
+*.log
+*.csv
+*.pkl
+
+config/__pycache__/
+log/
+output/
+.vscode/
+
+

@@ -1,0 +1,40 @@
+GPUS: (0,)
+WORKERS: 4
+PRINT_FREQ: 50
+
+DATASET:
+  DATASET: BP4D
+  ROOT: '/media/GAIC_G13-1/users/Nan/BP4D_crop'
+  #ROOT: '/home/xianng/Documents/database/BP4D/BP4D_crop'
+  TRAINSET: './data/csv_data/BP4D/fold1_train.csv'
+  TESTSET: './data/csv_data/BP4D/fold1_test.csv'
+  FLIP: true
+  SCALE_FACTOR: 0.5
+  ROT_FACTOR: 45
+  CONTRAST_FACTOR: 4
+  BRIGHT_FACTOR: 4
+MODEL:  
+  NAME: 'Resnet'
+  INIT_WEIGHTS: true
+  PRETRAINED: true
+  IMAGE_SIZE:
+    - 256
+    - 256
+  OUTPUT_SIZE:
+    - 12
+    - 1
+
+TRAIN:
+  BATCH_SIZE_PER_GPU: 32
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 80
+  RESUME: true
+  OPTIMIZER: 'sgd'
+  LR: 0.001
+  WD: 0.0001
+  LR_STEP: [20, 40]
+  MOMENTUM: 0.9
+  NESTEROV: false
+TEST:
+  BATCH_SIZE_PER_GPU: 16
